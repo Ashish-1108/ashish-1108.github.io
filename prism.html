@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PRISM by Ashish Anand Shukla: training-free test-time adaptation for audio-text models under severe acoustic noise.">
+  <title>PRISM | Ashish Anand Shukla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="prism-overrides.css">
+  <link rel="stylesheet" href="prism-cleanup.css">
+  <link rel="stylesheet" href="site-overrides.css">
+  <style>.publication-header h1{font-size:clamp(72px,13vw,150px)}@media(max-width:720px){.publication-header h1{font-size:76px}}</style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="index.html">Ashish Shukla</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#research">Research</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="header-cv" href="Ashish-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume <span aria-hidden="true">&#8599;</span></a>
+    </header>
+    <main class="prism-page">
+      <section class="publication-header reveal">
+        <p class="eyebrow">Publication 01 &middot; CIKM 2026</p>
+        <h1>PRISM</h1>
+        <p class="publication-title">Prototype-Rectified Iterative Self-supervised Manifold Denoising under Severe Acoustic Shift</p>
+        <p class="publication-authors"><strong>Ashish Anand Shukla</strong>, Rini Smita Thakur, Aryan Das, Vinod K. Kurmi</p>
+        <div class="publication-meta"><span>Accepted at the 35th ACM International Conference on Information and Knowledge Management</span><span>Rome, Italy &middot; 2026</span></div>
+        <div class="publication-actions"><a class="action-primary" href="https://arxiv.org/abs/2608.15037" target="_blank" rel="noopener noreferrer">Read on arXiv <span>&#8599;</span></a><a class="action-secondary" href="https://github.com/Ashish-1108/PRISM" target="_blank" rel="noopener noreferrer">View code <span>&#8599;</span></a></div>
+      </section>
+      <figure class="architecture-figure reveal"><img src="images/fig_architecture_prism.webp" alt="PRISM architecture showing prototype rectification and iterative manifold denoising"><figcaption>PRISM architecture: geometric corrections align corrupted audio representations with frozen text prototypes.</figcaption></figure>
+      <section class="abstract-block reveal" aria-labelledby="abstract-title"><div><h2 id="abstract-title">Abstract</h2><p class="abstract-copy">Audio-Text Foundation Models (ATMs) fail catastrophically under severe acoustic noise, yet existing adaptation strategies either rely on gradient-based Test-Time Adaptation (TTA), which reinforces noise rather than signal, or on prompt tuning that requires privileged noise annotations unavailable at inference. We address these failures with PRISM (Prototype-Rectified Iterative Self-supervised Manifold Denoising), a training-free, source-free TTA framework grounded in the Affine Noise Hypothesis: severe acoustic noise induces a low-rank affine shift in the multimodal latent space, with more than 90% of distortion energy confined to the leading 60 principal components.</p><p class="abstract-copy">PRISM estimates and reverses this distortion from an unlabeled target batch using frozen text prototypes as geometric anchors via three closed-form geometric corrections compiled into a single static projection matrix by Affine Bias Regression. At inference, adaptation reduces to one matrix-vector multiplication in 0.0009 ms, making it substantially faster than gradient-based TTA while requiring no additional training. On UrbanSound8K, PRISM improves over the zero-shot baseline by 12.94 percentage points and surpasses an oracle-assisted TTA baseline by 9.41 percentage points. We further identify the Polyphonic Trap, a principled failure mode of subspace deflation for broadband classes, and resolve it via Confidence-Aware Regression (CAR), recovering up to 8.16 percentage points for the worst-affected class.</p></div></section>
+      <section class="short-description reveal" aria-labelledby="description-title"><p class="eyebrow">Key idea</p><div class="brief-layout"><h2 id="description-title">A geometric correction<br><em>at test time.</em></h2><p>CLAP-like audio-text models can lose their alignment when noise changes the input. PRISM reads that shift from an unlabeled batch, then corrects the representation with frozen text prototypes and one static projection. No gradients, noise labels, or extra training are needed.</p></div></section>
+      <section class="prism-grid reveal"><aside><p class="eyebrow">Method</p><p class="fact">Training-free<br><strong>Source-free TTA</strong></p><p class="fact">Inference cost<br><strong>0.0009 ms</strong></p><p class="fact">Evaluation<br><strong>UrbanSound8K</strong></p></aside><div class="prism-copy"><div class="method-diagram"><span>Corrupted embedding</span><b>&rarr;</b><span>Prototype rectification</span><b>&rarr;</b><span>Refined representation</span></div><h2>The problem</h2><p>Audio-text models can perform well in clean environments but degrade when acoustic conditions change. Real-world audio contains traffic, crowds, machinery, reverberation, and other sources of distortion.</p><h2>The key idea</h2><p>PRISM treats acoustic corruption as a geometric shift in representation space. Frozen text prototypes act as anchors while closed-form corrections estimate and reverse the distortion from an unlabeled target batch.</p><h2>Contributions</h2><ol><li>Formulates severe acoustic noise as a low-rank affine shift in multimodal latent space.</li><li>Introduces a training-free, source-free adaptation procedure with no privileged noise annotations.</li><li>Compiles geometric corrections into one static projection matrix for fast inference.</li><li>Identifies and resolves the Polyphonic Trap using Confidence-Aware Regression.</li></ol></div></section>
+    </main>
+    <footer class="site-footer"><span>&copy; 2026 Ashish Anand Shukla</span><span>PRISM &middot; CIKM 2026</span><a href="index.html">&#8592; Back home</a></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

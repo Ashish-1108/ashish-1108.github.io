@@ -1,0 +1,1 @@
+.contact-links{display:flex;gap:28px;flex-wrap:wrap}.contact-link{display:inline-flex;align-items:center;gap:6px}.contact-link span{margin-left:0}@media(max-width:720px){.contact-links{gap:20px}.project-grid{grid-template-columns:1fr}.project-wide{grid-column:auto}}
